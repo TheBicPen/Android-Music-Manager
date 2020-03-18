@@ -8,9 +8,11 @@ import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -51,5 +53,18 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void onScanButtonClick(View view){
+        TextView textbox = findViewById(R.id.textView);
+        int counter;
+        try {
+            counter = Integer.parseInt(textbox.getText().toString()) + 1;
+            Log.d("debug123", "parsed string in textbox");
+        } catch (Exception e) {
+            Log.d("debug123", "unable to parse string in textbox");
+            counter = 0;
+        }
+        textbox.setText(Integer.toString(counter));
     }
 }
